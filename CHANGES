@@ -1,0 +1,6 @@
+1.0 | 2017-08-15 10:12:06 -0500
+
+  * Moved the Netmap plugin into the Bro package manager. (Seth Hall)
+
+  * Included the Netmap header files in the plugin to reduce
+    the dependency on building the plugin. (Seth Hall)
