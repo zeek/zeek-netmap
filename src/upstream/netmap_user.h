@@ -97,7 +97,7 @@
 #define unlikely(x)	__builtin_expect(!!(x), 0)
 #endif /* likely and unlikely */
 
-#include <netmap.h>
+#include <upstream/netmap.h>
 
 /* helper macro */
 #define _NETMAP_OFFSET(type, ptr, offset) \
