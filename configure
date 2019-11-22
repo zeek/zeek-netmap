@@ -128,7 +128,7 @@ if [ -z "$brodist" ]; then
 
             build_type=`bro-config --build_type`
 
-	    if [ "$build_type" = "debug" ]; then
+            if [ "$build_type" = "debug" ]; then
                 append_cache_entry BRO_PLUGIN_ENABLE_DEBUG BOOL true
             fi
 
