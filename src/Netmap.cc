@@ -1,6 +1,6 @@
 
 #include <assert.h>
-#include "bro-config.h"
+#include "zeek-config.h"
 #include "Netmap.h"
 
 using namespace iosource::pktsrc;
@@ -80,7 +80,7 @@ bool NetmapSource::ExtractNextPacket(Packet* pkt)
 		current_hdr.ts = hdr.ts;
 		current_hdr.caplen = hdr.caplen;
 		current_hdr.len = hdr.len;
-	
+
 		if ( ! ApplyBPFFilter(current_filter, &current_hdr, data) )
 			{
 			++num_discarded;

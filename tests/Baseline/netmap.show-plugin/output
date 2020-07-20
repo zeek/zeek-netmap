@@ -1,4 +1,4 @@
-Bro::Netmap - Packet acquisition via Netmap (dynamic, version)
+Zeek::Netmap - Packet acquisition via Netmap (dynamic, version)
     [Packet Source] NetmapReader (interface prefix "netmap"; supports live input)
     [Packet Source] NetmapReader (interface prefix "vale"; supports live input)
 

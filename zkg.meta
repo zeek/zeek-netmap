@@ -2,5 +2,5 @@
 description = Packet source plugin that provides native Netmap support.
 tags = packet source, plugin, netmap
 plugin_dir = build
-build_command = ( ./configure --bro-dist=%(bro_dist)s && make )
-test_command = ( cd tests && btest -d )
+build_command = ./configure && cd build && make
+test_command = cd tests && btest -d -c btest.cfg

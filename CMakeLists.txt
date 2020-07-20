@@ -1,7 +1,8 @@
-cmake_minimum_required(VERSION 2.6.3)
+cmake_minimum_required(VERSION 3.0 FATAL_ERROR)
 
-project(BroPluginNetmap)
-include(BroPlugin)
+project(ZeekPluginNetmap)
+
+include(ZeekPlugin)
 
 # Not currently using this because we are shipping the
 # netmap headers for now.
@@ -10,11 +11,11 @@ include(BroPlugin)
 #if ( NETMAP_FOUND )
 #     include_directories(BEFORE ${NETMAP_INCLUDE_DIR})
 
-     bro_plugin_begin(Bro Netmap)
-     bro_plugin_cc(src/Plugin.cc)
-     bro_plugin_cc(src/Netmap.cc)
-     bro_plugin_dist_files(README COPYING broctl/netmap.py)
-     bro_plugin_end()
+zeek_plugin_begin(Zeek Netmap)
+zeek_plugin_cc(src/Plugin.cc)
+zeek_plugin_cc(src/Netmap.cc)
+zeek_plugin_dist_files(README COPYING broctl/netmap.py)
+zeek_plugin_end()
 
 #    message(STATUS "Netmap prefix       : ${NETMAP_ROOT_DIR}")
 #else ()
