@@ -1,11 +1,11 @@
 
-#ifndef BRO_PLUGIN_BRO_NETMAP
-#define BRO_PLUGIN_BRO_NETMAP
+#ifndef ZEEK_PLUGIN_ZEEK_NETMAP
+#define ZEEK_PLUGIN_ZEEK_NETMAP
 
 #include <plugin/Plugin.h>
 
 namespace plugin {
-namespace Bro_Netmap {
+namespace Zeek_Netmap {
 
 class Plugin : public ::plugin::Plugin
 {

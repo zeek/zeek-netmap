@@ -1,10 +1,11 @@
 
 #include "Plugin.h"
 #include "Netmap.h"
+#include <iosource/Component.h>
 
-namespace plugin { namespace Bro_Netmap { Plugin plugin; } }
+namespace plugin { namespace Zeek_Netmap { Plugin plugin; } }
 
-using namespace plugin::Bro_Netmap;
+using namespace plugin::Zeek_Netmap;
 
 plugin::Configuration Plugin::Configure()
 	{
@@ -12,7 +13,7 @@ plugin::Configuration Plugin::Configure()
 	AddComponent(new ::iosource::PktSrcComponent("NetmapReader", "vale", ::iosource::PktSrcComponent::LIVE, ::iosource::pktsrc::NetmapSource::InstantiateVale));
 
 	plugin::Configuration config;
-	config.name = "Bro::Netmap";
+	config.name = "Zeek::Netmap";
 	config.description = "Packet acquisition via Netmap";
 	config.version.major = 1;
 	config.version.minor = 0;

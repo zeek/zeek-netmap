@@ -6,6 +6,7 @@
 extern "C" {
 #define NETMAP_WITH_LIBS
 #include <stdio.h>
+#include <pcap.h>
 #include <upstream/netmap_user.h>
 }
 
