@@ -4,10 +4,9 @@
 #define IOSOURCE_PKTSRC_NETMAP_SOURCE_H
 
 extern "C" {
-#define NETMAP_WITH_LIBS
-#include <stdio.h>
 #include <pcap.h>
-#include <upstream/netmap_user.h>
+#define NETMAP_WITH_LIBS
+#include <net/netmap_user.h>
 }
 
 #include "iosource/PktSrc.h"
