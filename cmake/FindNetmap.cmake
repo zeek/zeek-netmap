@@ -1,10 +1,3 @@
-# THIS ISN'T CURRENTLY USED!!!  We are shipping the netmap
-# header files with this distribution for now.
-#
-#
-#
-#
-#
 # - Try to find netmap includes.
 #
 #
