@@ -1,7 +1,7 @@
-import BroControl.plugin
-import BroControl.config
+import ZeekControl.plugin
+import ZeekControl.config
 
-class Netmap(BroControl.plugin.Plugin):
+class Netmap(ZeekControl.plugin.Plugin):
     def __init__(self):
         super(Netmap, self).__init__(apiversion=1)
 
