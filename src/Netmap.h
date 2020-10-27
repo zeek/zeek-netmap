@@ -3,6 +3,20 @@
 #ifndef IOSOURCE_PKTSRC_NETMAP_SOURCE_H
 #define IOSOURCE_PKTSRC_NETMAP_SOURCE_H
 
+//
+// FreeBSD netmap.h has an unconditional #include <stdatomic.h> which
+// can't be used with C++. Include what's needed from <atomic> here
+// and define _STDATOMIC_H_ so #include <stdatomic.h> is short-circuited.
+//
+// :-(
+//
+#if defined(__FreeBSD__)
+#include <atomic>
+using std::memory_order_release;
+using std::memory_order_acquire;
+#define _STDATOMIC_H_
+#endif
+
 extern "C" {
 #include <pcap.h>
 #define NETMAP_WITH_LIBS
