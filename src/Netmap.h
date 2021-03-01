@@ -1,7 +1,7 @@
 // See the file "COPYING" in the main distribution directory for copyright.
 
-#ifndef IOSOURCE_PKTSRC_NETMAP_SOURCE_H
-#define IOSOURCE_PKTSRC_NETMAP_SOURCE_H
+#ifndef ZEEK_NETMAP_NETMAP_H
+#define ZEEK_NETMAP_NETMAP_H
 
 extern "C" {
 #include <pcap.h>
@@ -9,10 +9,10 @@ extern "C" {
 #include <net/netmap_user.h>
 }
 
-#include "iosource/PktSrc.h"
+#include <zeek/iosource/PktSrc.h>
+#include "zeek-compat.h"
 
-namespace iosource {
-namespace pktsrc {
+namespace ZEEK_IOSOURCE_NS::pktsrc {
 
 class NetmapSource : public iosource::PktSrc {
 public:
@@ -62,7 +62,6 @@ private:
 	const u_char* last_data;
 };
 
-}
 }
 
 #endif

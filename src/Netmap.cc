@@ -1,8 +1,7 @@
-
-#include "zeek-config.h"
+#include <zeek/zeek-config.h>
 #include "Netmap.h"
 
-using namespace iosource::pktsrc;
+using namespace ZEEK_IOSOURCE_NS::pktsrc;
 
 NetmapSource::~NetmapSource()
 	{
@@ -126,12 +125,12 @@ void NetmapSource::Statistics(Stats* s)
 	s->dropped = nd->st.ps_drop + nd->st.ps_ifdrop;
 	}
 
-iosource::PktSrc* NetmapSource::InstantiateNetmap(const std::string& path, bool is_live)
+ZEEK_IOSOURCE_NS::PktSrc* NetmapSource::InstantiateNetmap(const std::string& path, bool is_live)
 	{
 	return new NetmapSource(path, is_live, "netmap");
 	}
 
-iosource::PktSrc* NetmapSource::InstantiateVale(const std::string& path, bool is_live)
+ZEEK_IOSOURCE_NS::PktSrc* NetmapSource::InstantiateVale(const std::string& path, bool is_live)
 	{
 	return new NetmapSource(path, is_live, "vale");
 	}
