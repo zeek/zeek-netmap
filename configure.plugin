@@ -14,7 +14,11 @@ plugin_option()
 {
     case "$1" in
         --with-netmap=*)
-            append_cache_entry NETMAP_ROOT_DIR PATH $optarg
+            # With an empty value, the user might have skipped the zkg
+            # user_var input, so ignore then:
+            if [ -n "$optarg" ]; then
+                append_cache_entry NETMAP_ROOT_DIR PATH $optarg
+            fi
             return 0
             ;;
 
