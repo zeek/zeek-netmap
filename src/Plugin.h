@@ -1,17 +1,18 @@
 
-#ifndef ZEEK_PLUGIN_ZEEK_NETMAP
-#define ZEEK_PLUGIN_ZEEK_NETMAP
+#ifndef ZEEK_NETMAP_PLUGIN_H
+#define ZEEK_NETMAP_PLUGIN_H
 
-#include <plugin/Plugin.h>
+#include <zeek/plugin/Plugin.h>
+#include "zeek-compat.h"
 
-namespace plugin {
+namespace ZEEK_PLUGIN_NS {
 namespace Zeek_Netmap {
 
-class Plugin : public ::plugin::Plugin
+class Plugin : public ZEEK_PLUGIN_NS::Plugin
 {
 protected:
 	// Overridden from plugin::Plugin.
-	virtual plugin::Configuration Configure();
+	virtual ZEEK_PLUGIN_NS::Configuration Configure();
 };
 
 extern Plugin plugin;

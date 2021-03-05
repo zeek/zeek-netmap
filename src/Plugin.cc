@@ -1,18 +1,21 @@
+#include <zeek/iosource/Component.h>
 
 #include "Plugin.h"
 #include "Netmap.h"
-#include <iosource/Component.h>
 
-namespace plugin { namespace Zeek_Netmap { Plugin plugin; } }
+namespace ZEEK_PLUGIN_NS { namespace Zeek_Netmap { Plugin plugin; } }
 
-using namespace plugin::Zeek_Netmap;
+using namespace ZEEK_PLUGIN_NS::Zeek_Netmap;
+using namespace ZEEK_IOSOURCE_NS;
 
-plugin::Configuration Plugin::Configure()
+ZEEK_PLUGIN_NS::Configuration Plugin::Configure()
 	{
-	AddComponent(new ::iosource::PktSrcComponent("NetmapReader", "netmap", ::iosource::PktSrcComponent::LIVE, ::iosource::pktsrc::NetmapSource::InstantiateNetmap));
-	AddComponent(new ::iosource::PktSrcComponent("NetmapReader", "vale", ::iosource::PktSrcComponent::LIVE, ::iosource::pktsrc::NetmapSource::InstantiateVale));
+	AddComponent(new PktSrcComponent("NetmapReader", "netmap", PktSrcComponent::LIVE,
+					 pktsrc::NetmapSource::InstantiateNetmap));
+	AddComponent(new PktSrcComponent("NetmapReader", "vale", PktSrcComponent::LIVE,
+					 pktsrc::NetmapSource::InstantiateVale));
 
-	plugin::Configuration config;
+	ZEEK_PLUGIN_NS::Configuration config;
 	config.name = "Zeek::Netmap";
 	config.description = "Packet acquisition via Netmap";
 	config.version.major = 1;

@@ -2,5 +2,9 @@
 description = Packet source plugin that provides native Netmap support.
 tags = packet source, plugin, netmap
 plugin_dir = build
-build_command = ./configure && cd build && make
+build_command = ./configure --with-netmap=%(netmap_root_dir)s && cd build && make
 test_command = cd tests && btest -d -c btest.cfg
+depends =
+  zeek >=3.1.0
+user_vars =
+    netmap_root_dir [] "Root directory of Netmap installation"
