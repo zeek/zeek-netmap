@@ -44,8 +44,51 @@ configuration similar to this in node.cfg::
 This will start up Zeek processes sniffing on NETMAP pipes attached to
 the interface. In order to balance packets from the interface across 
 those pipes you will need to run the tool named `lb` that is included
-in the `apps/lb` directory of the NETMAP distribution. Make sure that you
-instruct `lb` to split the packets into the same number of pipes that 
-Zeek is configured to sniff.
+in the `apps/lb` directory of the NETMAP distribution. 
+
+Make sure that you instruct `lb` to split the packets into the same number 
+of pipes (this should match what you set as lb_procs) that Zeek is configured 
+to sniff.
+
+Setting up Zeek with Zeek::Netmap Plugin on FreeBSD
+--------------------------------------
+
+On FreeBSD 13+, the netmap tools are available in the latest source code.
+Simply download the latest source code to get the app under 
+`/usr/src/tools/tools/netmap`. Navigate to this directory and run
+make to build all of the tools::
+
+    # cd /usr/src/tools/tools/netmap/
+    # make
+    Building /usr/obj/usr/src/amd64.amd64/tools/tools/netmap/pkt-gen.o
+    Building /usr/obj/usr/src/amd64.amd64/tools/tools/netmap/pkt-gen
+    Building /usr/obj/usr/src/amd64.amd64/tools/tools/netmap/nmreplay.o
+    Building /usr/obj/usr/src/amd64.amd64/tools/tools/netmap/nmreplay
+    Building /usr/obj/usr/src/amd64.amd64/tools/tools/netmap/bridge.o
+    Building /usr/obj/usr/src/amd64.amd64/tools/tools/netmap/bridge
+    Building /usr/obj/usr/src/amd64.amd64/tools/tools/netmap/lb.o
+    Building /usr/obj/usr/src/amd64.amd64/tools/tools/netmap/pkt_hash.o
+    Building /usr/obj/usr/src/amd64.amd64/tools/tools/netmap/lb
+
+You can move the lb binary to wherever you want. In the following example,
+all of the netmap tools have been moved to /nsm/netmap. Running the following
+`lb` command line will create a "zeek" interface, connected to interface `em0`
+with 4 netmap pipes (note this is not a service, the lb binary must be forked
+to the background or left running, which needs to be fixed)::
+
+    /nsm/netmap/lb -i em0 -p zeek:4 &
+
+Ensure the `em0` interface is in promiscuous mode before running this. With `lb`
+running, use the following node.cfg to use 4 zeek processes to match 
+the 4 netmap pipes::
+
+    [worker-1]
+    type=worker
+    host=localhost
+    lb_method=custom
+    lb_procs=4
+    interface=netmap::zeek
+
+Then run `zeekctl deploy` and you should be up and running
 
 Enjoy!
