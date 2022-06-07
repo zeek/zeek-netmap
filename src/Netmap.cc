@@ -87,6 +87,7 @@ bool NetmapSource::ExtractNextPacket(Packet* pkt)
 
 		pkt->Init(props.link_type, &current_hdr.ts, current_hdr.caplen, current_hdr.len, data);
 		++stats.received;
+		stats.bytes_received += current_hdr.len;
 		return true;
 		}
 
@@ -119,6 +120,7 @@ void NetmapSource::Statistics(Stats* s)
 		}
 
 	s->received = stats.received;
+	s->bytes_received = stats.bytes_received;
 	s->link = stats.received + num_discarded;
 
 	// TODO: Seems these counters aren't actually set?
